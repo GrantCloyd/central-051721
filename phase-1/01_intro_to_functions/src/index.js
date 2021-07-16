@@ -18,6 +18,9 @@ const introduction = function() {
 // introduction reference 
 // introduction() invocation
 // return defines the output 
+//What do you notice about the following?
+let intro = introduction()
+console.log(intro)
 
 //Intro is a pram
 //Is Hoisted

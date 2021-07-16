@@ -55,6 +55,11 @@ Object.entries(cakeOrder1)
 cakeOrder1.price = 20.00
 cakeOrder1["price"] = 30.00
 
+//Delete
+delete cakeOrder1.size
+console.log(cakeOrder1)
+cakeOrder1.size = 'cup cake'
+
 //let cakeOrder2 = cakeOrder1
 //Pass by reference 
 let cakeOrder2 = {...cakeOrder1, complete:true, price:15}
@@ -73,6 +78,7 @@ function loopThrough(cakes){
 }
 let cakeNames = ['Chocolate Porter', 'Earl Grey', 'Salted Carmel', 'Vanilla', 'Carrot', 'Lemon Cream', 'Rose', 'Pink Champagne', 'Raspberry Cardamon Rose']
 
+console.log(cakeNames)
 //Read Arrays
 cakeNames[0]
 //cakeNames[8]
@@ -95,7 +101,9 @@ const logPrice = cake => console.log(cake.price)
 //const cakeLogger = cake => console.log(cake)
 
 function forEveryCake(cakeArray, cakeAction){
+
     for(let cake of cakeArray){
+        //How can we debug the loop by stopping the code in place?
         //console.log(cake)
         cakeAction(cake)
     }
@@ -118,3 +126,25 @@ orders.forEach(function(cake) {
 //can be used on objects
 //and will return the key
 //when used on an array it gives us the index
+const findCupCakesBleh = (cake) => {
+    console.log(cake)
+    if(cake.size === 'cup cake'){
+        console.log('hi')
+        return cake
+    } else {
+        return null
+    }
+}
+
+const findCupCakes = cake => cake.size === 'cup cake'? cake : null
+function findCake(array, test){
+    let i = 0
+    let result = null
+    while(result == null && i < array.length){
+        result = test(array[i])
+        i++
+    }
+    return result
+}
+
+findCake(orders,findCupCakes)
