@@ -1,5 +1,29 @@
 import React, {useState, useEffect} from 'react'
-import {useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import styled from 'styled-components'
+
+const Form = styled.form`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+`
+
+const Input = styled.input`
+    padding: 1em;
+    margin: 1em 0;
+    width: 18em;
+    border-radius: 0.375em;  
+`
+
+const Textarea = styled.textarea`
+    padding: 1em;
+    margin: 1em 0;
+    width: 18em;
+    border-radius: 0.375em;
+    height: 10em;
+`
 
 //Form handles POST and
 function ItemForm({items, setItems}) {
@@ -39,35 +63,38 @@ function ItemForm({items, setItems}) {
 
     return (
         <div> 
-             <form onSubmit={handleSubmit}>
-                <input 
+            <Form onSubmit={handleSubmit}>
+                <h1>New Item</h1>
+                <Input 
                     type="text" 
                     placeholder="Item Name"
                     value={itemName}
                     name="itemName" 
-                    onChange={(e) => setItemName(e.target.value)}/>
-                <input 
+                    onChange={(e) => setItemName(e.target.value)}
+                />
+                <Input 
                     type="text" 
                     placeholder="Image Url"
                     value={image}
                     name="image" 
                     onChange={(e) => setImageUrl(e.target.value)}/>
-                <input 
+                <Input 
                     type="number" 
                     placeholder="price"
                     value={price}
                     name="price" 
                     onChange={(e) => setPrice(e.target.value)}/>
-                <textarea 
-                    type="text" 
+                <Textarea 
                     placeholder="description"
                     name="description" 
                     value={description}
-                    onChange={(e) => setDescription(e.target.value)}/><br/>
+                    onChange={(e) => setDescription(e.target.value)}
+                >
+                </Textarea><br />
                 <input type="submit" value="Post" />
-            </form> 
+            </Form> 
             <div>
-                {errors?errors.map(error => <p>{error}</p>): null}
+                {errors ? errors.map(error => <p>{error}</p>): null}
             </div>
         </div>
     )

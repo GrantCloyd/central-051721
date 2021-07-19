@@ -1,28 +1,28 @@
 class ItemsController < ApplicationController
     def index
         items = Item.all
-        render json:items
+        render json: items
     end
     
     def show
         item = Item.find(params[:id])
-        render json:item
+        render json: item
     end
 
     def create
         byebug
         item = Item.create(item_params)
-        if Item.valid?
-            render json:item
+        if item.valid?
+            render json: item
         else 
-            render json: {status: "error", code: 4000, message: Items.errors}
+            render json: {status: "error", message: Items.errors}, status: 422
         end 
     end
 
     def update
         item = Item.find(params[:id])
         Item.update(item_params)
-        render json:item
+        render json: item
     end 
 
     def destroy

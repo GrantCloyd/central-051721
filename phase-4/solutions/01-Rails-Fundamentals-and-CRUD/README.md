@@ -6,6 +6,7 @@
 - Create routes in Rails 
 - Write routes using RESTful convention
 - Scaffold an API using rails generators
+- Use [Postman](https://www.postman.com/downloads/) to test API
 
 ## MVC Discussion
 
@@ -27,7 +28,7 @@ dog -< walks
 2. Generate migrations and models for dogs, which have a name:string
 3. Generate migrations and models for walks, which have week_day:string and dog:belongs_to
 4. Migrate your tables 
-6. Add your relationships in the Models file
+6. Add your relationships in the Models files
 7. Add seeds and review the content in your rails console to verify it's working
 
 ## Routes Demo
