@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Route, Switch } from "react-router";
 import Navbar from './components/Navbar';
 
@@ -9,16 +9,6 @@ import ItemForm from './components/ItemForm'
 const API_PATH = `http://localhost:3001/items`
 
 function App() {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    async function fetchItems(){
-      let res = await fetch(API_PATH)
-      let json = await res.json()
-      setItems(json)
-    }
-    fetchItems();
-  },[]);
 
   return (
     <div class="App">

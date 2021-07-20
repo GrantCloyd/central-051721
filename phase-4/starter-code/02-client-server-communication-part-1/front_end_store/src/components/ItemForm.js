@@ -26,7 +26,7 @@ const Textarea = styled.textarea`
 `
 
 //Form handles POST and adding the itme.
-function ItemForm({items, setItems}) {
+function ItemForm({}) {
     const [errors, setErrors] = useState(false)
 
     let history = useHistory();
@@ -35,13 +35,7 @@ function ItemForm({items, setItems}) {
     async function handleSubmit(e){
         e.preventDefault()
         // write out the approach in psuedocode first, then implement
-        const item = {
-            store_id: 1,
-            item_name: itemName,
-            description: description,
-            image_url: imageUrl,
-            price: price
-        }
+        
         //
     }
 
