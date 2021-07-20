@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
         if item.valid?
             render json: item
         else 
-            render json: {status: "error", message: Items.errors}, status: 422
+            render json: {status: "error", message: item.errors.full_messages}, status: 422
         end 
     end
 
