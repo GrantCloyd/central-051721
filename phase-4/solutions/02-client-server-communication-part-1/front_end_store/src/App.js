@@ -11,15 +11,6 @@ const API_PATH = `http://localhost:3001/items`
 function App() {
   const [items, setItems] = useState([]);
 
-  useEffect(() => {
-    async function fetchItems(){
-      let res = await fetch(API_PATH)
-      let json = await res.json()
-      setItems(json)
-    }
-    fetchItems();
-  },[]);
-
   return (
     <div class="App">
       <Navbar />

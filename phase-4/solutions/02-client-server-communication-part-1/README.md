@@ -11,12 +11,10 @@
 
 ```txt
 05 min pre-test or warmup
-10 min REST 
-10 min CORS
-05 min Project set up
+25 min Concept Review & Project set up
 10 min GET data 
 10 min render data 
-10 min Check for Understanding 
+10 min Break
 25 min POST data
 10 min Check for Understanding build a post
 10 min render data
@@ -161,58 +159,38 @@ Compare and contrast our routes from rails and our routes from react. How are th
 
 Please add your group's responses to [this document](https://hackmd.io/@dlm/phase4-lec2-client-server-communication-discussion)
 
-### Help me build this out.
+### 1st Task - Help me build out our Index route for the React Application
 
-How do we set up our react application to consume data from our rails API?
+How do we set up our react application's home route to consume data from our rails API? Where do we start?
 
+After we finish, let's take a break.
+## 2nd Task: Create action and POST
+It’s time to work with our form, it has been a while so this is a good opportunity to review react form and data flow. Help me build out the controlled form. We already have some styled components created here, `Form`, `Input` and `Textarea`, so the basic form structure is already done, we just need to do the wiring so that react is keeping track of our form data and then connect with our backend when the form is submitted.
 
-### Check for Understanding 
-
-Please take a moment on your own to consider the following questions and submit your answers to the form linked below. We'll be taking a short break after you complete this
-- What route would fetch an individual item?
-- What action would that route trigger in our controller?
-- Write a fetch call that will retrieve a single item. (you can try it in the browser console before pasting here)
-
-Please submit your answers to [this form](https://forms.gle/bwFpZcssiRzhogTFA).
-
-## Segment 2: Create action and POST
-It’s time to work with our form, it has been a while for students so it may be a good opportunity to review react form and data flow. Have students navigate you through building out a control form that renders a new item optimistically.
+### Handling Form Submission
 
 We are going to build a request using a POST.
-Every request outside of our GET methods will require a second argument. An object with the key of method, headers and body.
+Every request outside of our GET methods will require a second argument. An object with the keys of method, headers and a body (except for DELETE).
 
+The Method is the HTTP verb, in this case we are making a POST request.
 
-The Method is the http verb HTTP, in this case we are making a POST.
+The headers contain more information about our request, we can use them to send things like authentication tokens. We are going to use the header `Content-Type` to indicate that the request we are sending contains JSON.
 
-The headers contain more information about our request, we can use it to send things like authentication tokens. We are going to use the header of Content-Type to indicate that the request we are sending contains JSON.
+Lastly is our body. This is the data we are actually sending, but we can’t send a POJO, we will need to convert our object to JSON first using the `JSON.stringify` method.
 
-Lastly is our body. This is the data we are actually sending, but we can’t send a POJO, we will need to convert our object to JSON with the method JSON.stringify.
-
-```
-   async function handleSubmit(e){
-        e.preventDefault()
-        const itemData = {
-        //We will hard code the store id for now
-            store_id:1,
-            item_name: itemName,
-            description,
-            image_url: image,
-            price
-        }
-        const res = await fetch('http://localhost:3000/items',{
-            method: 'POST',
-            headers: {
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify(itemData)
-        })
-        const json = await res.json()
-        //Set items in state and redirect to home
-        setItems([...items, json])
-        history.push("/");
-    }
+```js
+// fill in handleSubmit here and use async await syntax for fetch. 
+// for now, we'll hard code the store_id
+// let's psuedocode the approach first, then implement
 
 ```
 
-If we hop into our rails app we can add a byebug to check out our params to confirm our route is being hit.
+If we hop into our rails app we can add a byebug to check out our params to confirm our route is being hit and that the form data is going through okay. Then we can check the network tab to see what we've got there as well.
 
+## Task 3 - Adding Validation Errors to the Form
+
+- Read through the controller
+- Read through our Item model/schema & decide what validations we would want to add
+- Add validations to model
+- Check out controller and read through logic
+- How are we going to know from the frontend if there were errors?
