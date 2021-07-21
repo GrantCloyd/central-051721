@@ -29,3 +29,27 @@ Lead students to create state for our items with useState and build a fetch requ
     end
     
 ```
+
+
+GET "/items" => "items#index" 
+GET "/items/:id" => "items#show"
+POST "/items" => "items#create"
+PATCH/PUT "/items/:id" => "items#update"
+DELETE "/items/:id" => "items#destroy"
+
+What if we wanted to list all of the items in a particular store?
+
+what would a RESTful route for that look like?
+
+GET "/stores/:store_id/items" => "items#index"
+
+If I'm managing a store and I want to mark an item as on sale, what would my restful route look like?
+
+what would a RESTful route for that look like?
+
+If we are just updating the price of an item, it would be:
+- PATCH "items/:id" (Update)
+
+If we had a sale model that could keep track of sales and when they start and end.
+- POST "/sales" => "sales#create" (we would need to pass the item_id within the body)
+- POST "/items/:item_id/sales" => "sales#create"
