@@ -24,26 +24,30 @@ Buying an item should create an order and redirect the user to the specific orde
 
 Students will need to add the new route and appropriate actions, strong params. 
 
-```
-//routes.rb
-    resources :orders, only: [:show, :create]
+```rb
+# config/routes.rb
+  resources :orders, only: [:show, :create]
 
-//orders_controller.rb
+# app/controllers/orders_controller.rb
+class OrdersController < ApplicationController
+  # ...
   def show
-        order = Order.find(params[:id])
-        render json:{user:order.user, item:order.item}
-    end
+    order = Order.find(params[:id])
+    render json:{user:order.user, item:order.item}
+  end
 
-    def create
-        order = Order.create(order_params)
-        render json:order
-    end
+  def create
+    order = Order.create(order_params)
+    render json:order
+  end
 
-    private
+  private
 
-    def order_params
-        params.require(:order).permit(:item_id, :user_id)
-    end
+  def order_params
+    params.require(:order).permit(:item_id, :user_id)
+  end
+
+end
 
 ```
 
