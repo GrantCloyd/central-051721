@@ -17,7 +17,7 @@ function NewItemForm({items, setItems}) {
 
 
         const itemData = {
-            store_id:2,
+            store_id: 1,
             item_name: itemName,
             description,
             image_url: image,
