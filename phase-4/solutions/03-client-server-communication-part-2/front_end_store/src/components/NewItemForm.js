@@ -4,7 +4,7 @@ import { Input, Form, Textarea } from "./styled"
 
 
 //Form handles POST and
-function ItemForm({items, setItems}) {
+function NewItemForm({items, setItems}) {
     const [itemName, setItemName] = useState("")
     const [price, setPrice] = useState("")
     const [image, setImageUrl] = useState("")
@@ -17,7 +17,7 @@ function ItemForm({items, setItems}) {
 
 
         const itemData = {
-            store_id:1,
+            store_id:2,
             item_name: itemName,
             description,
             image_url: image,
@@ -71,4 +71,4 @@ function ItemForm({items, setItems}) {
     )
 }
 
-export default ItemForm;
+export default NewItemForm;

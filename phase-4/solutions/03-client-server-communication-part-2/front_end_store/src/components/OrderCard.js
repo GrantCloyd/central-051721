@@ -3,14 +3,14 @@ import React, { useState, useEffect } from 'react'
 
 
 function OrderCard() {  
-    const [order, setOrders] = useState(null);
+    const [order, setOrder] = useState(null);
     const id = useParams().id
   
     useEffect(() => {
         async function fetchOrder(){
-          let res = await fetch(`http://localhost:3000/orders/${id}`)
+          let res = await fetch(`http://localhost:3001/orders/${id}`)
           let json = await res.json()
-          setOrders(json)
+          setOrder(json)
         }
         fetchOrder()
       },[]);

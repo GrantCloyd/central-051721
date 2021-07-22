@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router';
 import Navbar from './components/Navbar';
 import ItemContainer from './components/ItemContainer';
-import ItemForm from './components/ItemForm';
+import NewItemForm from './components/NewItemForm';
+import EditItemForm from './components/EditItemForm';
 import OrderCard from './components/OrderCard';
 
 function App() {
@@ -24,11 +25,17 @@ function App() {
     <div class="App">
       <Navbar />
       <Switch>
-        <Route path="/items/new">
-          <ItemForm items={items} setItems={setItems} />
+        <Route exact path="/items/new">
+          <NewItemForm items={items} setItems={setItems} />
+        </Route>
+        <Route exact path="/items/:id/edit">
+          <EditItemForm items={items} setItems={setItems} />
         </Route>
         <Route exact path="/">
           <ItemContainer items={items} setItems={setItems} />
+        </Route>
+        <Route exact path="/orders/:id">
+          <OrderCard />
         </Route>
       </Switch>
     </div>
