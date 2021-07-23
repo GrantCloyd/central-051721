@@ -8,7 +8,12 @@ function ItemCard({ item, items, setItems }) {
 
   //Delete item
   async function deleteItem() {
-    
+    const res = await fetch(`http://localhost:3001/items/${item.id}`, {
+      method: 'DELETE'
+    })
+    if (res.ok) {
+      setItems(items.filter((i) => i.id !== item.id));
+    }
   }
 
   //Review POST

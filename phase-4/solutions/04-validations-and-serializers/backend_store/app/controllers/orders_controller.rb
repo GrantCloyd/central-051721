@@ -7,7 +7,11 @@ class OrdersController < ApplicationController
 
     def create
         order = Order.create(order_params)
-        render json: order
+        if order.valid?
+            render json: order
+        else
+            render json: { message: order.errors.full_messages.to_sentence}, status: :unprocessable_entity
+        end
     end
 
     private

@@ -11,7 +11,11 @@ class ItemsController < ApplicationController
 
     def create
         item = Item.create(item_params)
-        render json: item
+        if item.valid?
+            render json: item
+        else
+            render json: {message: item.errors.full_messages.to_sentence}, status: :unprocessable_entity
+        end
     end
 
     def update
@@ -20,6 +24,12 @@ class ItemsController < ApplicationController
 
         render json: item
     end 
+
+    def destroy
+        item = Item.find(params[:id])
+        item.destroy
+        render json: item
+    end
 
     
     private
