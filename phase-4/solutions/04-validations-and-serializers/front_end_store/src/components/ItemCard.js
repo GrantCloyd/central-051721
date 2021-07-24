@@ -29,8 +29,13 @@ function ItemCard({ item, items, setItems }) {
       },
       body: JSON.stringify(orderData)
     });
-    const json = await res.json();
-    history.push(`/orders/${json.id}`);
+    if (res.ok) {
+      const order = await res.json();
+      history.push(`/orders/${order.id}`);
+    } else {
+      const error = await res.json()
+      setErrors(error.message)
+    }
   }
 
   return (

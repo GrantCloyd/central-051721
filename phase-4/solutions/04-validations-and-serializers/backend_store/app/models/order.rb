@@ -7,7 +7,7 @@ class Order < ApplicationRecord
   def three_per_customer
     # did this user already order this item 3 times?
     if Order.where(user: self.user, item: self.item).count >= 3
-      errors.add(:order_amount, "only 3 purchases of #{self.item.item_name} are allowed per user")
+      errors.add(:only, "3 purchases of #{self.item.item_name} are allowed per customer")
     end
   end
 end
